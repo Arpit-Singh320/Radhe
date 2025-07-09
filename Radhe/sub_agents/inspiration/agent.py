@@ -8,7 +8,7 @@ from Radhe.tools.places import map_tool
 
 
 place_agent = Agent(
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash",
     name="place_agent",
     instruction=prompt.PLACE_AGENT_INSTR,
     description="This agent suggests a few destination given some user proferences",
@@ -20,7 +20,7 @@ place_agent = Agent(
 )
 
 poi_agent = Agent(
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash",
     name="poi_agent",
     description="This agent suggests a few activities and points of interests given a destination",
     instruction=prompt.POI_AGENT_INSTR,
@@ -32,7 +32,7 @@ poi_agent = Agent(
 )
 
 inspiration_agent = Agent(
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash",
     name="inspiration_agent",
     description="A travel inspiration agent who inspire users, and discover their next vacations; Provide information about places, activities, interests,",
     instruction=prompt.INSPIRATION_AGENT_INSTR,

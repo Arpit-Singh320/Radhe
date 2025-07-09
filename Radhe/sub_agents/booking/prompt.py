@@ -10,7 +10,7 @@ BOOKING_AGENT_INSTR = """
 
 - If the following information are all empty:
   - <itinerary/>,
-  - <outbound_flight_selection/>, <return_flight_selection/>, and
+  - <outbound_flight_selection/>, <inbound_flight_selection/>, and
   - <hotel_selection/>
   There is nothing to do, transfer back to the root_agent.
 - Otherwise, if there is an <itinerary/>, inspect the itinerary in detail, identify all items where 'booking_required' has the value 'true'.
@@ -25,9 +25,8 @@ Optimal booking processing flow:
 - When the user explicitly gives the go ahead, for each identified item, be it flight, hotel, tour, venue, transport, or events, carry out the following steps:
   - Call the tool `create_reservation` to create a reservation against the item.
   - Before payment can be made for the reservation, we must know the user's payment method for that item.
-  - Call `payment_choice` to present the payment choicess to the user.
-  - Ask user to confirm their payment choice. Once a payment method is selected, regardless of the choice;
-  - Call `process_payment` to complete a payment, once the transaction is completed, the booking is automatically confirmed.
+  - Call `payment_choice` to present the payment choices to the user.
+  - After the user selects a payment method, you MUST immediately call the `process_payment` tool to complete the transaction. Do NOT ask for another confirmation.
   - Repeat this list for each item, starting at `create_reservation`.
 
 Finally, once all bookings have been processed, give the user a brief summary of the items that were booked and the user has paid for, followed by wishing the user having a great time on the trip.
@@ -46,7 +45,7 @@ Other trip details:
   <end_date>{end_date}</end_date>
   <outbound_flight_selection>{outbound_flight_selection}</outbound_flight_selection>
   <outbound_seat_number>{outbound_seat_number}</outbound_seat_number>
-  <return_flight_selection>{return_flight_selection}</return_flight_selection>
+  <inbound_flight_selection>{inbound_flight_selection}</inbound_flight_selection>
   <return_seat_number>{return_seat_number}</return_seat_number>
   <hotel_selection>{hotel_selection}</hotel_selection>
   <room_selection>{room_selection}</room_selection>

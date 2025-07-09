@@ -96,20 +96,8 @@ We're building AI that doesn't just save time—it transforms experiences.
 
 ## Setup Instructions
 
-### 1. Install Poetry
 
-```bash
-# Install Poetry (dependency management tool)
-curl -sSL https://install.python-poetry.org | python3 -
-
-# Add Poetry to your PATH
-export PATH="/Users/$(whoami)/.local/bin:$PATH"
-
-# Verify installation
-poetry --version
-```
-
-### 2. Configure Environment Variables
+### 1. Configure Environment Variables
 
 ```bash
 # Copy the example environment file
@@ -125,14 +113,12 @@ Required variables to set in `.env`:
 - `GOOGLE_PLACES_API_KEY=your_places_api_key_here`
 - For Vertex AI: `GOOGLE_CLOUD_PROJECT` and `GOOGLE_CLOUD_LOCATION`
 
-### 3. Install Dependencies
+### 2. Install Dependencies
 
 ```bash
-# Navigate to the Radhe directory
-cd Radhe
 
 # Install Python dependencies
-poetry install
+pip install google-adk
 ```
 
 ## Running the Radhe
@@ -140,9 +126,6 @@ poetry install
 ### Command Line Interface
 
 ```bash
-# Activate the Poetry virtual environment
-cd ..
-poetry env activate
 
 # Run the Radhe in CLI mode
 adk run Radhe
@@ -151,9 +134,6 @@ adk run Radhe
 ### Web Interface
 
 ```bash
-# Activate the Poetry virtual environment
-poetry env activate
-
 # Start the web interface
 adk web
 ```
